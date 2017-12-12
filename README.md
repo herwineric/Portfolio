@@ -6,3 +6,8 @@ This is my portfolio containing different papers of labs and projects. Files wil
 Link to the university database with the downloadable thesis:
 http://liu.diva-portal.org/smash/record.jsf?pid=diva2:1119265
 
+
+CURRENT PROJECTS:
+
+- Package TTC - A package that makes the pre-processing for variables with strings much easier. Try it out? Run:
+devtools::install_github(repo = "herwineric/Portfolio", subdir = "Project/R/Text converter/")

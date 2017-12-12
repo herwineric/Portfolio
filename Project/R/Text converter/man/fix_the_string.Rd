@@ -2,25 +2,25 @@
 % Please edit documentation in R/fix_the_string.R
 \name{fix_the_string}
 \alias{fix_the_string}
-\title{Filtering words}
+\title{Takes a string and converts it to columns.}
 \usage{
-fix_the_string(data_string, data_orginal, leng = 1000, match_data = NULL,
-  low_tresh = 0.005)
+fix_the_string(data_string, data_orginal = NULL, match_data = NULL,
+  low_tresh = 0.005, seperator = c("punct", "digit"))
 }
 \arguments{
-\item{data_string}{more data}
+\item{data_string}{The vaible/ string that you want to columns. Must be of class "character"}
 
-\item{data_orginal}{shall be a integer of class character or numeric}
+\item{data_orginal}{An optional data frame to bind the columns to a data set. data_orginal and data_string must be of the same length.}
 
-\item{leng}{desired length of the data}
+\item{match_data}{An optional string to filter the words in the variable.}
 
-\item{match_data}{Possible data base}
+\item{low_tresh}{Ignore if match_data is given. Sets a lower threshold to filter out non-frequent words porportinal to unique words in data_string.}
 
-\item{low_tresh}{lower theshold}
+\item{seperator}{Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.}
 }
 \value{
-Returns the merged data frame with columns of text
+Returns a data frame with class "TTC".
 }
 \description{
-This is a complementary function to fix_the_string. Filter the data with another database or just a threshold.
+The input is a variable of strings. The function filter the data and gets the most frequent words in the variable into a vaiable. This variable is the filtered with a choosen string or just a threshold.
 }

@@ -1,4 +1,4 @@
-#'@title Words to col
+#'@title Words to column
 #'@description This is a complementary function to fix_the_string. Filter the data with another database or just a threshold.
 #'@param data_orginal data
 #'@param word_string shall be a integer of class character or numeric
@@ -6,9 +6,8 @@
 #'@return Returns the filtered words.
 #'@export
 
-words_to_col <- function(data_orginal, word_string, str_ing_v){
+words_to_col <- function(data_orginal = NULL, word_string, str_ing_v){
   #data_orginal is the data you want to merge with
-  
   
   names_data <- sort(names(word_string))
   
@@ -39,11 +38,11 @@ words_to_col <- function(data_orginal, word_string, str_ing_v){
     
   }
   
-  dat_store <- data.frame(store_matr)
-  
-  dat_final <- cbind(data_orginal,dat_store)
-  
-  # org_data.frame(ID = train$train_id, price = train$price,shipping = train$shipping,item_condition_id = train$item_condition_id)
+  if(is.null(data_orginal) == FALSE){
+    dat_store <- data.frame(store_matr)
+  } else {
+    dat_store <- cbind(data_orginal, data.frame(store_matr))
+  }
   
   return(dat_final)
 }

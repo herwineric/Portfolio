@@ -2,18 +2,18 @@
 % Please edit documentation in R/freq_word_tbl.R
 \name{freq_word_tbl}
 \alias{freq_word_tbl}
-\title{Frequent words}
+\title{Filtered frequent words in the string.}
 \usage{
-freq_word_tbl(data_string, leng = 1000)
+freq_word_tbl(data_string, seperator = c("punct", "digit"))
 }
 \arguments{
-\item{data_string}{data string}
+\item{data_string}{The string to be analysied.}
 
-\item{leng}{length of data}
+\item{seperator}{Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.}
 }
 \value{
 Returns the filtered words.
 }
 \description{
-This is a complementary function to fix_the_string. Filter the data with another database or just a threshold.
+This is a function that can split the string and filter it and produce a table of frequent words. This is also a complemntary function to fix_the_string.
 }

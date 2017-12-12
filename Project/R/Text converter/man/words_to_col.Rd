@@ -2,9 +2,9 @@
 % Please edit documentation in R/words_to_col.R
 \name{words_to_col}
 \alias{words_to_col}
-\title{Words to col}
+\title{Words to column}
 \usage{
-words_to_col(data_orginal, word_string, str_ing_v)
+words_to_col(data_orginal = NULL, word_string, str_ing_v)
 }
 \arguments{
 \item{data_orginal}{data}

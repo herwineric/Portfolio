@@ -17,5 +17,5 @@ filter_words(data, match_data = NULL, low_tresh = 0.005)
 Returns the filtered words.
 }
 \description{
-This is a complementary function to fix_the_string. Filter the data with another database or just a threshold.
+This is a complementary function to fix_the_string. Filter the data with another string of words or just a threshold.
 }

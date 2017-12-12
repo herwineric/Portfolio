@@ -1,29 +1,39 @@
-#'@title Frequent words
-#'@description This is a complementary function to fix_the_string. Filter the data with another database or just a threshold.
-#'@param data_string data string 
-#'@param leng length of data
+#'@title Filtered frequent words in the string.
+#'@description This is a function that can split the string and filter it and produce a table of frequent words. This is also a complemntary function to fix_the_string.
+#'@param data_string The string to be analysied. 
+#'@param seperator Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.
 #'@return Returns the filtered words.
 #'@export
 
-freq_word_tbl <- function(data_string, leng = 1000){
+freq_word_tbl <- function(data_string, seperator = c("punct","digit")){
   
-  str_ing <- str_split(string = data_string[1:leng],pattern = " ")
+  str_ing <- str_split(string = data_string, pattern = " ")
   
-  #take away all the dots and digits
-  str_ing_v <- lapply(str_ing, FUN = function(x){
+  if(length(seperator) >= 1 ){
+    ##
+    string_extr <- c("[")
+    for(txt in 1:length(seperator)){
+      string_extr[txt+1] <- paste0("[:", seperator[txt], ":]", collapse = "")
+    }
+    string_extr[length(string_extr)+1] <- "]+"
     
-    s1 <- gsub("[[:punct:] [:digit:]]+", "", x)
-    tolower(s1)
-  })
-  
+    string_of_filter <- paste0(string_extr, collapse = " ")
+    ##
+    
+    #take away all the dots and digits and make it to lower-case
+    str_ing_v <- lapply(str_ing, FUN = function(x){
+      
+      s1 <- gsub(string_of_filter, "", x)
+      tolower(s1)
+    })
+    
+  } else {
+    str_ing_v <- tolower(str_ing)
+  }
+
   unl_str_ing_v <- unlist(str_ing_v)
   
-  
-  #make it to lower-case
-  df <- data.frame(list = unl_str_ing_v)
-  
-  
-  str_ing_v_tabl <- table(df$list)
+  str_ing_v_tabl <- table(unl_str_ing_v)
   
   return(list(str_ing_v_tabl, str_ing_v))
 }
