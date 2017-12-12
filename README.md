@@ -9,5 +9,5 @@ http://liu.diva-portal.org/smash/record.jsf?pid=diva2:1119265
 
 CURRENT PROJECTS:
 
-- Package TTC - A package that makes the pre-processing for variables with strings much easier. Try it out? Run:
+- Package TTC - A package that makes the pre-processing for variables with strings much easier. News for updates are posted in the README file in the folder. Try it out? Run:
 devtools::install_github(repo = "herwineric/Portfolio", subdir = "Project/R/Text converter/")
