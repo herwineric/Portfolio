@@ -16,7 +16,11 @@ fix_the_string <- function(data_string, data_orginal = NULL, match_data = NULL, 
     cat("Converting a string of length", length(data_string), "to columns with threshold ",low_tresh, "\n")
   }
   
+  cat("\n")
+  
   Sys.sleep(0.05)
+  
+  t1 <- Sys.time()
   
   pb <- txtProgressBar(0,1, label = "Hj", style = 3)
   
@@ -25,23 +29,27 @@ fix_the_string <- function(data_string, data_orginal = NULL, match_data = NULL, 
   #1:th
   str_ing_func <- freq_word_tbl(data_string, seperator)
   
-  setTxtProgressBar(pb, 0.3333, title = "Split Done!")
+  setTxtProgressBar(pb, 0.2, title = "Split Done!")
   
   bind <- str_ing_func[[1]]
   
   #2:th
   final_words <- filter_words(bind, match_data)
   
-  setTxtProgressBar(pb, 0.6666, title = "Gathering the words!")
+  setTxtProgressBar(pb, 0.45, title = "Gathering the words!")
   
   bind2 <- str_ing_func[[2]]
   
   #3:th
-  data_done <- words_to_col(data_orginal, final_words, str_ing_v = bind2)
+  data_done <- words_to_col(data_orginal = data_orginal, word_string = final_words, str_ing_v = bind2, pb)
   setTxtProgressBar(pb, 0.9999, title = "Done!")
   
+  t2 <- Sys.time()
+  fin_t <- t2-t1
   close(pb)
+  cat("\n")
+  cat("Finished converting on", fin_t, "seconds")
   
-  class(data_done) <- "TTC"
+  class(data_done) <- c("data.frame", "TTC")
   return(data_done)
 }
