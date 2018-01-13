@@ -4,13 +4,11 @@
 \alias{fix_the_string}
 \title{Takes a string and converts it to columns.}
 \usage{
-fix_the_string(data_string, data_orginal = NULL, match_data = NULL,
-  low_tresh = 0.005, seperator = c("punct", "digit"))
+fix_the_string(data_string, match_data = NULL, low_tresh = 0.005,
+  seperator = c("punct", "digit"))
 }
 \arguments{
 \item{data_string}{The vaible/ string that you want to columns. Must be of class "character"}
-
-\item{data_orginal}{An optional data frame to bind the columns to a data set. data_orginal and data_string must be of the same length.}
 
 \item{match_data}{An optional string to filter the words in the variable.}
 

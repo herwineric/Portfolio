@@ -4,11 +4,9 @@
 \alias{words_to_col}
 \title{Words to column}
 \usage{
-words_to_col(data_orginal = NULL, word_string, str_ing_v, ...)
+words_to_col(word_string, str_ing_v, ...)
 }
 \arguments{
-\item{data_orginal}{data}
-
 \item{word_string}{shall be a integer of class character or numeric}
 
 \item{str_ing_v}{lower threshold. Do not recommend to lower this much more due to computational reasons}

@@ -1,5 +1,8 @@
 --- Updates for package TTC ---
 
+- 13/01/2018 - Version 0.1.2
+Removed some unnessecary parameters in words_to_col() and fix_the_string()
+
 - 12/12/2017 - Version 0.1.1
 Added some utility and fixed some bugs that occured with the option not to bind with another data frame.
 
