@@ -13,10 +13,10 @@ filter_words <- function(data, match_data = NULL, low_tresh = 0.005){
   
   
   if(is.null(match_data) == FALSE){
-    finns <- sorted_s[1:100]
+    finns <- sorted_s
     match_v <- c(as.character(match_data), "")
   } else {
-    finns <- sorted_s[1:100]
+    finns <- sorted_s
     match_v <- names(sorted_s[sorted_s > length(data)* 0.05 ])
   }
   

@@ -4,10 +4,16 @@
 #'@param match_data An optional string to filter the words in the variable.
 #'@param low_tresh Ignore if match_data is given. Sets a lower threshold to filter out non-frequent words porportinal to unique words in data_string.
 #'@param seperator Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.
+#'@param parallel Make the computation parallelized.
 #'@return Returns a data frame with class "TTC". 
+#'@examples 
+#'data("data_TTC")
+#'fix_the_string(data_TTC$text)
+#'
+#'fix_the_string(data_TTC$text, parallel = TRUE)
 #'@export
 
-fix_the_string <- function(data_string, match_data = NULL, low_tresh = 0.005, seperator = c("punct","digit")){
+fix_the_string <- function(data_string, match_data = NULL, low_tresh = 0.005, seperator = c("punct","digit"), parallel = FALSE){
   
   if(is.null(match_data) == FALSE){
     cat("Converting a string of length", length(data_string), "to columns", "\n")
@@ -16,6 +22,11 @@ fix_the_string <- function(data_string, match_data = NULL, low_tresh = 0.005, se
   }
   
   cat("\n")
+  
+  if(parallel == TRUE){
+    cat("Parallel computation on OS type:", .Platform$OS.type, "with maximum", parallel::detectCores(), "number of cores")
+    cat("\n")
+  }
   
   Sys.sleep(0.05)
   
@@ -40,7 +51,7 @@ fix_the_string <- function(data_string, match_data = NULL, low_tresh = 0.005, se
   bind2 <- str_ing_func[[2]]
   
   #3:th
-  data_done <- words_to_col(word_string = final_words, str_ing_v = bind2, pb)
+  data_done <- words_to_col(word_string = final_words, str_ing_v = bind2, parallel = parallel, pb)
   setTxtProgressBar(pb, 0.9999, title = "Done!")
   
   t2 <- Sys.time()
@@ -48,6 +59,7 @@ fix_the_string <- function(data_string, match_data = NULL, low_tresh = 0.005, se
   close(pb)
   cat("\n")
   cat("Finished converting on", fin_t, "seconds")
+  cat("\n")
   
   class(data_done) <- c("data.frame", "TTC")
   return(data_done)

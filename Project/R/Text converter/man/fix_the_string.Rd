@@ -5,7 +5,7 @@
 \title{Takes a string and converts it to columns.}
 \usage{
 fix_the_string(data_string, match_data = NULL, low_tresh = 0.005,
-  seperator = c("punct", "digit"))
+  seperator = c("punct", "digit"), parallel = FALSE)
 }
 \arguments{
 \item{data_string}{The vaible/ string that you want to columns. Must be of class "character"}
@@ -15,10 +15,18 @@ fix_the_string(data_string, match_data = NULL, low_tresh = 0.005,
 \item{low_tresh}{Ignore if match_data is given. Sets a lower threshold to filter out non-frequent words porportinal to unique words in data_string.}
 
 \item{seperator}{Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.}
+
+\item{parallel}{Make the computation parallelized.}
 }
 \value{
 Returns a data frame with class "TTC".
 }
 \description{
 The input is a variable of strings. The function filter the data and gets the most frequent words in the variable into a vaiable. This variable is the filtered with a choosen string or just a threshold.
+}
+\examples{
+data("data_TTC")
+fix_the_string(data_TTC$text)
+
+fix_the_string(data_TTC$text, parallel = TRUE)
 }
