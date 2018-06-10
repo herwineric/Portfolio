@@ -1,5 +1,8 @@
 --- Updates for package TTC ---
 
+- 10/06/2018 - Version 1.1.0
+Made the package more lighter in terms of removing one function and some processes could be changed. The name of fix_the_string() was changed to TTC(). For unix users the TTC function will parallelize by default. This is not an option for Windows at the moment due to some few bugs.
+
 - 11/04/2018 - Version 1.0.1
 The completion of the package for it's initially intended usage. What has happened:
 -- Fixed a small dataset so that the demonstration of the package will be easier.

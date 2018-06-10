@@ -1,39 +1,38 @@
 #'@title Filtered frequent words in the string.
 #'@description This is a function that can split the string and filter it and produce a table of frequent words. This is also a complemntary function to fix_the_string.
 #'@param data_string The string to be analysied. 
-#'@param seperator Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.
-#'@return Returns the filtered words.
+#'@param minSup minimum support for the words.
+#'@param check_words a vector of words if you want to filter away some words manually. A pre-build in vector is in place for a small amount of common english words. Default is NULL.
+#'@return Returns the frequency table of the words and the splitted original data.
 #'@export
 
-freq_word_tbl <- function(data_string, seperator = c("punct","digit")){
+freq_word_tbl <- function(data_string, minSup, check_words = NULL){
   
-  str_ing <- str_split(string = data_string, pattern = " ")
+  if(is.null(check_words)){
+    #just some common words
+    check_words <-  c("a","about",  "all", "also", "and", "as", "at" ,"be", "because", "but", "by", "can", "come", "do", "i", "it", "of", "or", "to", "so")
+  } 
   
-  if(length(seperator) >= 1 ){
-    ##
-    string_extr <- c("[")
-    for(txt in 1:length(seperator)){
-      string_extr[txt+1] <- paste0("[:", seperator[txt], ":]", collapse = "")
-    }
-    string_extr[length(string_extr)+1] <- "]+"
-    
-    string_of_filter <- paste0(string_extr, collapse = " ")
-    ##
-    
-    #take away all the dots and digits and make it to lower-case
-    str_ing_v <- lapply(str_ing, FUN = function(x){
-      
-      s1 <- gsub(string_of_filter, "", x)
-      tolower(s1)
+  split <- str_split(string = data_string, pattern = " ")
+  
+  if(.Platform$OS.type == "unix"){
+    split_n_clean <- parallel::mclapply(split, FUN = function(x){
+      cleaned <- gsub(x = x, pattern = "[[:punct:]]+", replacement = "")
+      return(tolower(cleaned))
     })
-    
   } else {
-    str_ing_v <- tolower(str_ing)
+    split_n_clean <- lapply(split, FUN = function(x){
+      cleaned <- gsub(x = x, pattern = "[[:punct:]]+", replacement = "")
+      return(tolower(cleaned))
+    })
   }
-
-  unl_str_ing_v <- unlist(str_ing_v)
   
-  str_ing_v_tabl <- table(unl_str_ing_v)
+  frequent_1_items <- table(unlist(split_n_clean))
+  check <- minSup * length(frequent_1_items)
   
-  return(list(str_ing_v_tabl, str_ing_v))
+  frequent_1_items <- frequent_1_items[frequent_1_items >= check & names(frequent_1_items) != ""]
+  frequent_1_items <- frequent_1_items[(names(frequent_1_items) %in% check_words) == FALSE]
+  
+  ret_2 <- list(frequent_1_items = frequent_1_items, split_n_clean = split_n_clean)
+  return(ret_2)
 }

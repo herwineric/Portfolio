@@ -4,20 +4,16 @@
 \alias{words_to_col}
 \title{Words to column}
 \usage{
-words_to_col(word_string, str_ing_v, parallel = FALSE, ...)
+words_to_col(frequent_1_items, split_n_clean)
 }
 \arguments{
-\item{word_string}{shall be a integer of class character or numeric}
+\item{frequent_1_items}{shall be a vector with thw frequency of the words}
 
-\item{str_ing_v}{lower threshold. Do not recommend to lower this much more due to computational reasons}
-
-\item{parallel}{Make the computation parallelized.}
-
-\item{...}{Ignore. A complementary to fix_the_string.}
+\item{split_n_clean}{The splitted and cleaned words from freq_word_tbl}
 }
 \value{
 Returns the filtered words.
 }
 \description{
-This is a complementary function to fix_the_string. Filter the data with another database or just a threshold.
+This is a complementary function to TTC function.
 }

@@ -4,15 +4,17 @@
 \alias{freq_word_tbl}
 \title{Filtered frequent words in the string.}
 \usage{
-freq_word_tbl(data_string, seperator = c("punct", "digit"))
+freq_word_tbl(data_string, minSup, check_words = NULL)
 }
 \arguments{
 \item{data_string}{The string to be analysied.}
 
-\item{seperator}{Default values "punct" and "digit", but accept more. See https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html for more.}
+\item{minSup}{minimum support for the words.}
+
+\item{check_words}{a vector of words if you want to filter away some words manually. A pre-build in vector is in place for a small amount of common english words. Default is NULL.}
 }
 \value{
-Returns the filtered words.
+Returns the frequency table of the words and the splitted original data.
 }
 \description{
 This is a function that can split the string and filter it and produce a table of frequent words. This is also a complemntary function to fix_the_string.
