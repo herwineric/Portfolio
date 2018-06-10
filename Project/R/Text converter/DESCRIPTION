@@ -2,7 +2,7 @@ Package: TTC
 Type: Package
 Title: TextToColumns
 Version: 1.1.0
-Date: 2018-04-11
+Date: 2018-06-10
 Author: Eric Herwin
 Maintainer: Any issues, contact: <erihe068@student.liu.se>
 Description: Converts a variable of strings to columns
