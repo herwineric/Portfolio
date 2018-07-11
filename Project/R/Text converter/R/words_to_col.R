@@ -18,6 +18,7 @@ words_to_col <- function(frequent_1_items, split_n_clean){
       which(nam_check %in% names(x))
     })
   } else {
+    #filtrara bort alla ikke frekventa ord i en observation
     filtered_strings <- lapply(split_n_clean, FUN = function(x){
       i_l <- x[x %in% nam_check]
       table(i_l)
