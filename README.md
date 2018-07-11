@@ -12,3 +12,4 @@ CURRENT PROJECTS:
 - Package TTC - A package that makes the pre-processing for variables with strings much easier. News for updates are posted in the README file in the folder. Try it out? Run:
 -- devtools::install_github(repo = "herwineric/Portfolio", subdir = "Project/R/Text converter/")
 
+- Module TTCPy - The same purpose as the TTC package in R. News for updates are posted in the README file in the folder. The module will be uploaded to PyPI soon. For the moment please visit the .py file in the folder.

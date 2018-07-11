@@ -2,7 +2,7 @@
 
 This is the Python version of the original TTC package in R. The purpose of the package is to filter strings of non-frequent words and transform it to columns with the frequency if the the common words.
 
-The package is not big, the three things to remember, at the moment, is:
+The package is not big, the three things to remember, for the moment, is:
 
 1. The initial process of the class. Give it paramters such as minimum support between a value of 0 and 1. Remember, the lower the `minSup` is, the more time it will take to compute.
 
@@ -22,3 +22,7 @@ init.compute(data)
 init.header
 ```
 
+--- Updates for package TTCPy ---
+
+- 11/07/2018 - Version 0.1.1
+Implemented the TTC version from R to Python (TTCPy). There is not option for filtering out specific words as in the R package.
