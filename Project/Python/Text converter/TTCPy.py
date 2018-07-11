@@ -3,16 +3,21 @@ import numpy as np
 
 class TTC(object):
 
-    def __init__(self, data, minSup):
-        self.data = data
-        self.minSup = minSup
+    def __init__(self, minSup):
+        if minSup < 0 or minSup > 1:
+            raise ValueError("minSup must be between 0 and 1")
 
+        self.minSup = minSup
         self.header = None
 
-    def compute(self):
+    def compute(self, data):
         ### cleaning step
         #take away all that is not numbers or letters
-        splitted = [re.sub('[^A-Za-z0-9]+', ' ', x[0]) for x in self.data]
+        try:
+            splitted = [re.sub('[^A-Za-z0-9]+', ' ', x[0]) for x in data]
+        except ValueError:
+            print("Needs to be a list of strings")
+
         splitted = [x.split(" ") for x in splitted]
 
         #to make it to comparable strings
@@ -29,7 +34,7 @@ class TTC(object):
         np_flat_list = np.array(flat_list)
         unique, counts = np.unique(np_flat_list, return_counts=True)
 
-        check = minSup * len(unique)
+        check = self.minSup * len(unique)
 
         #filter for too low support and remove '' and make lower case
         frequent_1_items = [[k,v] for k,v in zip(unique, counts) if k != '' and v >= check]
