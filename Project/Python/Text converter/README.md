@@ -6,7 +6,7 @@ The package is not big, the three things to remember, for the moment, is:
 
 - - -
 
-    1. The initial process of the class. Give it paramters such as minimum support between a value of 0 and 1. Remember, the lower the `minSup` is, the more time it will take to compute.
+1. The initial process of the class. Give it paramters such as minimum support between a value of 0 and 1. Remember, the lower the `minSup` is, the more time it will take to compute.
 
 ```
 init = TTC(data, minSup)
@@ -18,14 +18,14 @@ The parameters:
 
 - - -
 
-    2. Later you can call the compute function that will compute it with the given data. The output will be a `numpy` array with the frequencies of the words.
+2. Later you can call the compute function that will compute it with the given data. The output will be a `numpy` array with the frequencies of the words.
 
 ```
 init.compute()
 ```
 - - -
 
-    3. You can also call the words that is the most frequent. These words are in the same order as the output from step 2. The output will be a `numpy` array with the frequent words.
+3. You can also call the words that is the most frequent. These words are in the same order as the output from step 2. The output will be a `numpy` array with the frequent words.
 
 ```
 init.header
