@@ -1,0 +1,14 @@
+Package: TTC
+Type: Package
+Title: TextToColumns
+Version: 1.1.0
+Date: 2018-06-10
+Author: Eric Herwin
+Maintainer: Any issues, contact: <erihe068@student.liu.se>
+Description: Converts a variable of strings to columns
+License: GPL-3
+Depends: R (>= 3.4), stringr
+URL: https://github.com/herwineric/Portfolio
+LazyData: TRUE
+RoxygenNote: 6.0.1
+Suggests: utils, parallel
